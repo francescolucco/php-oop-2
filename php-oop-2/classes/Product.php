@@ -9,10 +9,11 @@ class Product {
    private $brand;
 
 
-   public function __construct($_name, $_brand)
+   public function __construct($_name, $_brand, $_price)
    {
       $this->name = $_name;
       $this->brand = $_brand;
+      $this->price = $_price;
    }
 
    // SET

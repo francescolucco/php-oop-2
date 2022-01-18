@@ -10,6 +10,7 @@ class User {
    private $date;
    private $address;
    protected $points = 0;
+   protected $purchasedProducts;
 
    public function __construct($_name, $_lastname, $_address)
    {
@@ -40,6 +41,9 @@ class User {
    public function setPoint($_points){
       $this->point = $_points;
    }
+   public function setPurchasedProducts($_purchasedProducts){
+      $this->purchasedProducts = $_purchasedProducts;
+   }
    
    // GET
    public function getName(){
@@ -63,9 +67,14 @@ class User {
    public function getPoints(){
       return $this->points;
    }
-
-   public function getTotalPoints(){
-      $accumulatedPoints = $this->points + (round($this->price / 40) * 15);
-      return $accumulatedPoints;
+   public function getPurchasedProducts(){
+      return $this->purchasedProducts;
    }
+
+   public function buyProduct($product) {
+      $this->purchasedProducts[] = $product->getName(); 
+      $this->points = $this->points + (round($product->getPrice() / 40, 0) * 15);
+      return  $this->purchasedProducts;
+   }
+
 }
