@@ -35,6 +35,7 @@ class Product {
    public function setBrand($_brand){
       $this->brand = $_brand;
    }
+
    
    // GET
    public function getName(){
@@ -55,6 +56,8 @@ class Product {
    public function getBrand(){
       return $this->brand;
    }
+
+
 
 
 }

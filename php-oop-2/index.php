@@ -20,10 +20,17 @@ $new_product_6 = new Product('aspirapolvere Senza Filo Cyclone V10 Animal', 'Dys
 
 $new_user_premium->buyProduct($new_product_4);
 $new_user_premium->buyProduct($new_product_6);
+$new_user_premium->getTotalSpending($new_product_4);
+$new_user_premium->getTotalSpending($new_product_6);
+
 
 $new_user->buyProduct($new_product);
 $new_user->buyProduct($new_product_5);
 $new_user->buyProduct($new_product_3);
+$new_user->getTotalSpending($new_product);
+$new_user->getTotalSpending($new_product_5);
+
+
 
 ?>
 
@@ -50,26 +57,32 @@ $new_user->buyProduct($new_product_3);
             <?php endforeach; ?>
          </ul>
       </h5>
-      <h5> Punti totalizzati: <br>
-         <strong><?php echo $new_user->getPoints() ?></strong> punti
-      </h5>
-   </div>
-   <div class="user-premium">
-      <h1>UTENTE PREMIUM</h1>
-      <h3>
-         <?php echo $new_user_premium->getName() ?> <?php echo $new_user_premium->getLastname() ?>
-      </h3>
-      <h5>Prodotti comprati dall'utente <?php echo $new_user_premium->getPackage() ?>:
-         <ul>
-            <?php foreach ($new_user_premium->buyProduct($new_product_2) as $product) : ?>
-               <li><?php echo $product ?></li>
-            <?php endforeach; ?>
-         </ul>
+      <h5> Spesa totale: <br>
+         <strong><?php echo $new_user->getTotalSpending($new_product_2) ?></strong> &euro;
       </h5>
       <h5> Punti totalizzati: <br>
-         <strong><?php echo $new_user_premium->getPoints() ?></strong> punti
-      </h5>
-   </div>
+      <strong><?php echo $new_user->getPoints() ?></strong> punti
+   </h5>
+</div>
+<div class="user-premium">
+   <h1>UTENTE PREMIUM</h1>
+   <h3>
+      <?php echo $new_user_premium->getName() ?> <?php echo $new_user_premium->getLastname() ?>
+   </h3>
+   <h5>Prodotti comprati dall'utente <?php echo $new_user_premium->getPackage() ?>:
+   <ul>
+      <?php foreach ($new_user_premium->buyProduct($new_product_2) as $product) : ?>
+         <li><?php echo $product ?></li>
+         <?php endforeach; ?>
+      </ul>
+   </h5>
+   <h5> Spesa totale: <br>
+      <strong><?php echo $new_user_premium->getTotalSpending($new_product_2) ?></strong> &euro;
+   </h5>
+   <h5> Punti totalizzati: <br>
+   <strong><?php echo $new_user_premium->getPoints() ?></strong> punti
+</h5>
+</div>
 </body>
 
 </html>
